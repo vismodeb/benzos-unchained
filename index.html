@@ -1,0 +1,1085 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Benzos Unchained</title>
+    <meta
+      name="description"
+      content="Small virtual groups, expert-led workshops and 1 on 1 coaching for people navigating benzodiazepine recovery. Real people. Real support. A brighter tomorrow."
+    />
+    <meta name="theme-color" content="#0d3a6b" />
+    <script>
+      // Scroll animations hide elements until they scroll into view, so only
+      // switch them on when JS runs and the visitor allows motion.
+      (function () {
+        var root = document.documentElement;
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+          return;
+        root.classList.add("motion-ok");
+        // Safety net: if the main script never starts, show everything.
+        window.__motionTimer = setTimeout(function () {
+          root.classList.remove("motion-ok");
+        }, 4000);
+      })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="assets/images/facicon.webp"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="assets/styles/benzos-unchained-tailwind.css" />
+    <link rel="stylesheet" href="assets/styles/input.css" />
+  </head>
+  <body>
+    <!-- ===== Top announcement bar ===== -->
+    <div
+      class="sticky top-0 z-40 py-2.5 lg:py-1.5 bg-primary text-white"
+      role="region"
+      aria-label="Announcement"
+    >
+      <div class="container">
+        <div
+          class="grid grid-cols-2 gap-x-2 gap-y-2.5 lg:flex lg:items-center lg:justify-between lg:gap-4"
+        >
+          <a href="#" class="zoom-pulse btn-trial btn-sm px-2.5 lg:min-w-37.5">
+            7 Day Free Trial
+          </a>
+          <p
+            class="order-first col-span-2 text-center text-[12px] lg:text-[15px] font-semibold leading-snug lg:order-0 lg:col-auto line-clamp-1"
+          >
+            First 100 Founding Members $97 / A Month Locked In For Life
+          </p>
+          <div class="flex justify-between items-center gap-1">
+            <a
+              href="#"
+              class="zoom-pulse btn-join btn-sm px-2.5 w-full lg:min-w-37.5"
+            >
+              Join Now
+            </a>
+            <div class="w-7 min-w-7 h-7 rounded-full overflow-hidden">
+              <img
+                class="w-full h-full object-contain object-center"
+                src="assets/images/100%-satisfaction-guarantee.jpg"
+                alt="100%-satisfaction-guarantee"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <header
+      class="sticky z-40 top-[78.89px] lg:top-[44.39px] py-4 lg:py-3 bg-white shadow-[0px_2px_8px_0px_#0000000F] text-(--primary-color)"
+    >
+      <div class="container">
+        <div class="xl:hidden flex justify-between items-center gap-6 w-full">
+          <a href="index.html" class="inline-block w-full max-w-44">
+            <img
+              class="w-full h-full object-contain object-center"
+              src="assets/images/logo.webp"
+              alt="logo image"
+            />
+          </a>
+
+          <button
+            type="button"
+            data-drawer-target="mobileMenuDrawer"
+            data-drawer-show="mobileMenuDrawer"
+            data-drawer-placement="right"
+            aria-controls="mobileMenuDrawer"
+            class="inline-flex items-center justify-center text-center cursor-pointer outline-0 hover:text-white! hover:bg-(--primary-color) duration-400 [&_svg]:w-6 [&_svg]:h-6 w-11 h-11 rounded-[8px]"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3 18V16H21V18H3ZM3 13V11H21V13H3ZM3 8V6H21V8H3Z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <!-- drawer component -->
+        <div
+          id="mobileMenuDrawer"
+          aria-labelledby="drawer-label"
+          tabindex="-1"
+          class="flex bg-white xl:bg-transparent flex-col fixed top-0 right-0 z-40 bottom-0 transition-transform translate-x-full w-full max-w-100 duration-400 xl:max-w-full xl:translate-x-0 xl:static xl:flex-row xl:items-center xl:justify-center xl:gap-6"
+        >
+          <div
+            class="p-6 xl:p-0 flex items-center justify-between gap-4 xl:gap-0 border-b border-(--border-color)"
+          >
+            <a href="index.html" class="inline-block w-full max-w-44">
+              <img
+                class="w-full h-full object-contain object-center"
+                src="assets/images/logo.webp"
+                alt="logo image"
+              />
+            </a>
+
+            <button
+              type="button"
+              data-drawer-hide="mobileMenuDrawer"
+              aria-controls="mobileMenuDrawer"
+              class="xl:hidden bg-transparent w-11 h-11 flex items-center justify-center [&_svg]:w-5 [&_svg]:h-5 cursor-pointer outline-0 hover:text-white hover:bg-(--primary-color) duration-400 border border-[#E5E7EB] rounded-[8px]"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M15 5L5 15"
+                  stroke="currentColor"
+                  stroke-width="1.66667"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M5 5L15 15"
+                  stroke="currentColor"
+                  stroke-width="1.66667"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="drawer-body overflow-y-auto grow">
+            <nav
+              class="text-base font-medium leading-[150%] flex flex-col xl:flex-row xl:justify-center xl:items-center xl:gap-7"
+            >
+              <a
+                href="index.html"
+                class="inline-block py-5 xl:py-1 px-6 xl:px-0 hover:text-(--primary-color) border-b border-(--border-color) xl:border-white hover:border-(--primary-color) [&.active]:border-(--primary-color) duration-400 active"
+                >Home</a
+              >
+              <a
+                href="#"
+                class="inline-block py-5 xl:py-1 px-6 xl:px-0 hover:text-(--primary-color) border-b border-(--border-color) xl:border-white hover:border-(--primary-color) [&.active]:border-(--primary-color) duration-400"
+                >Why Us?</a
+              >
+              <a
+                href="#"
+                class="inline-block py-5 xl:py-1 px-6 xl:px-0 hover:text-(--primary-color) border-b border-(--border-color) xl:border-white hover:border-(--primary-color) [&.active]:border-(--primary-color) duration-400"
+                >Get Coaching</a
+              >
+              <a
+                href="#"
+                class="inline-block py-5 xl:py-1 px-6 xl:px-0 hover:text-(--primary-color) border-b border-(--border-color) xl:border-white hover:border-(--primary-color) [&.active]:border-(--primary-color) duration-400"
+                >FAQ</a
+              >
+              <a
+                href="#"
+                class="inline-block py-5 xl:py-1 px-6 xl:px-0 hover:text-(--primary-color) border-b border-(--border-color) xl:border-white hover:border-(--primary-color) [&.active]:border-(--primary-color) duration-400"
+                >About</a
+              >
+              <a
+                href="#"
+                class="inline-block py-5 xl:py-1 px-6 xl:px-0 hover:text-(--primary-color) border-b border-(--border-color) xl:border-white hover:border-(--primary-color) [&.active]:border-(--primary-color) duration-400"
+                >Community</a
+              >
+              <a
+                href="#"
+                class="inline-block py-5 xl:py-1 px-6 xl:px-0 hover:text-(--primary-color) border-b border-(--border-color) xl:border-white hover:border-(--primary-color) [&.active]:border-(--primary-color) duration-400"
+                >Contact Us</a
+              >
+            </nav>
+          </div>
+          <div class="drawer-footer">
+            <div class="p-6 xl:p-0">
+              <a href="#" class="w-full lg:auto btn_primary">
+                Book A 15 Minute Consultation
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- ===== Hero ===== -->
+      <section
+        class="hero relative isolate overflow-hidden py-8 lg:py-12"
+        aria-labelledby="hero-title"
+      >
+        <!-- photo backdrop + mist that keeps the copy readable -->
+        <div class="absolute inset-0 -z-10" aria-hidden="true">
+          <img
+            class="absolute inset-x-0 -top-[12%] h-[124%] w-full object-cover object-[30%_center]"
+            data-parallax="0.15"
+            src="assets/images/banner-bg.webp"
+            alt=""
+            fetchpriority="high"
+          />
+          <div class="hero-mist absolute inset-0"></div>
+        </div>
+
+        <div class="container">
+          <div
+            class="hero-grid grid items-center gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16"
+          >
+            <!-- Video card: a normal video player. It autoplays muted; the first
+                 click turns the sound on, after that a click plays / pauses. -->
+            <div
+              class="media-card video-player"
+              style="--video-ratio: 0.5625"
+              data-shape="portrait"
+              data-animate="from-left"
+              data-video-card
+              data-state="playing"
+              data-muted="true"
+              data-sound-hint="true"
+              data-icon="play"
+            >
+              <video
+                src="assets/images/video.mp4"
+                poster="assets/images/hero-video-poster.jpg"
+                autoplay
+                muted
+                playsinline
+                preload="auto"
+                aria-label="Benzos Unchained welcome video"
+              ></video>
+
+              <!-- mouse / touch surface (keyboard and screen-reader users use the controls) -->
+              <div class="video-surface" data-video-surface aria-hidden="true">
+                <span class="video-flash">
+                  <svg
+                    class="flash-play"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M7 4.5v15a1 1 0 0 0 1.53.85l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5Z"
+                    />
+                  </svg>
+                  <svg class="flash-sound" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M11 5 6.5 9H3v6h3.5L11 19V5Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M15 9.2a4 4 0 0 1 0 5.6M17.8 6.5a8 8 0 0 1 0 11"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </span>
+                <span class="video-sound-hint">
+                  <svg viewBox="0 0 24 24" fill="none" class="size-4">
+                    <path
+                      d="M11 5 6.5 9H3v6h3.5L11 19V5Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M16 9.5l5 5M21 9.5l-5 5"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                  <span class="hint-click">Click for sound</span>
+                  <span class="hint-tap">Tap for sound</span>
+                </span>
+              </div>
+
+              <div
+                class="video-controls"
+                data-video-controls
+                role="group"
+                aria-label="Video controls"
+              >
+                <button
+                  type="button"
+                  class="video-btn"
+                  data-video-play
+                  aria-label="Pause"
+                >
+                  <svg
+                    class="icon-play"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M7 4.5v15a1 1 0 0 0 1.53.85l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5Z"
+                    />
+                  </svg>
+                  <svg
+                    class="icon-pause"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M8 4h-1.5A1.5 1.5 0 0 0 5 5.5v13A1.5 1.5 0 0 0 6.5 20H8a1.5 1.5 0 0 0 1.5-1.5v-13A1.5 1.5 0 0 0 8 4Zm9.5 0H16a1.5 1.5 0 0 0-1.5 1.5v13A1.5 1.5 0 0 0 16 20h1.5a1.5 1.5 0 0 0 1.5-1.5v-13A1.5 1.5 0 0 0 17.5 4Z"
+                    />
+                  </svg>
+                </button>
+
+                <div class="video-volume">
+                  <button
+                    type="button"
+                    class="video-btn"
+                    data-video-mute
+                    aria-label="Unmute"
+                  >
+                    <svg
+                      class="icon-vol"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M11 5 6.5 9H3v6h3.5L11 19V5Z"
+                        fill="currentColor"
+                      />
+                      <path
+                        d="M15 9.2a4 4 0 0 1 0 5.6M17.8 6.5a8 8 0 0 1 0 11"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                    <svg
+                      class="icon-muted"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M11 5 6.5 9H3v6h3.5L11 19V5Z"
+                        fill="currentColor"
+                      />
+                      <path
+                        d="M16 9.5l5 5M21 9.5l-5 5"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </button>
+                  <input
+                    type="range"
+                    class="video-range video-vol"
+                    data-video-volume
+                    min="0"
+                    max="1"
+                    step="0.05"
+                    value="1"
+                    aria-label="Volume"
+                  />
+                </div>
+
+                <span class="video-time"
+                  ><span data-video-current>0:00</span> /
+                  <span data-video-duration>0:00</span></span
+                >
+
+                <input
+                  type="range"
+                  class="video-range video-seek"
+                  data-video-seek
+                  min="0"
+                  max="1000"
+                  step="1"
+                  value="0"
+                  aria-label="Seek"
+                />
+
+                <button
+                  type="button"
+                  class="video-btn"
+                  data-video-fullscreen
+                  aria-label="Full screen"
+                >
+                  <svg
+                    class="icon-fs-enter"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.9"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" />
+                  </svg>
+                  <svg
+                    class="icon-fs-exit"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.9"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Intro copy -->
+            <div>
+              <p class="sub-title" data-animate="fade-up">
+                Welcome to <span class="text-heading">Benzos Unchained</span>
+              </p>
+              <h1 id="hero-title" class="mt-2" data-animate="fade-up">
+                You Don’t Have to <br class="hidden xl:block" />Go Through This
+                Alone.
+              </h1>
+              <p
+                class="mt-3 text-lg font-bold text-heading md:text-xl"
+                data-animate="fade-up"
+              >
+                Healing happens with those who truly get it.
+              </p>
+              <p
+                class="mt-3 max-w-xl text-base leading-relaxed text-body md:text-lg"
+                data-animate="fade-up"
+              >
+                Small virtual groups offer real connection and support in a safe
+                and understanding community.
+              </p>
+
+              <div
+                class="mt-6 flex flex-col gap-3 sm:flex-row"
+                data-animate="fade-up"
+              >
+                <a href="#" class="btn-primary sm:min-w-42.5"
+                  >Join Now</a
+                >
+                <a href="#" class="btn-outline"
+                  >Book A 15 Minute Consultation</a
+                >
+              </div>
+
+              <ul class="mt-7 flex flex-wrap gap-x-8 gap-y-4">
+                <li class="flex items-center gap-3" data-animate="fade-up">
+                  <!-- people -->
+                  <svg
+                    class="size-10 shrink-0 text-primary"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="8" r="3.4" />
+                    <path
+                      d="M5.8 19.5c0-3.4 2.7-5.6 6.2-5.6s6.2 2.2 6.2 5.6v.5H5.8z"
+                    />
+                    <circle cx="4.9" cy="9.7" r="2.4" />
+                    <path
+                      d="M.6 18.2c0-2.5 1.9-4.2 4.5-4.2.6 0 1.2.1 1.7.3-1 1-1.6 2.4-1.7 4v.2H.6z"
+                    />
+                    <circle cx="19.1" cy="9.7" r="2.4" />
+                    <path
+                      d="M23.4 18.2c0-2.5-1.9-4.2-4.5-4.2-.6 0-1.2.1-1.7.3 1 1 1.6 2.4 1.7 4v.2h4.5z"
+                    />
+                  </svg>
+                  <span class="text-sm leading-tight text-body"
+                    >Real People<br />Real Support</span
+                  >
+                </li>
+                <li class="flex items-center gap-3" data-animate="fade-up">
+                  <!-- heart -->
+                  <svg
+                    class="size-10 shrink-0 text-primary"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M21 8.25c0-2.49-2.1-4.5-4.69-4.5-1.93 0-3.6 1.12-4.31 2.73-.72-1.6-2.38-2.73-4.31-2.73C5.1 3.75 3 5.76 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+                    />
+                  </svg>
+                  <span class="text-sm leading-tight text-body"
+                    >Connection<br />Not Judgment</span
+                  >
+                </li>
+                <li class="flex items-center gap-3" data-animate="fade-up">
+                  <!-- leaf -->
+                  <svg
+                    class="size-10 shrink-0 text-primary"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M20.5 3.5C11 3.5 4.5 8 4.5 15.2c0 1.7.5 3.1 1.3 4.3C6.9 15.4 10 11.6 14 9.5c-3.2 2.7-5.4 5.9-6.4 10.6 1.1.7 2.5 1.1 3.9 1.1 6.3 0 10.3-6.6 9-17.7Z"
+                    />
+                    <path d="M3 21.5c1.2-2.2 2.5-3.9 4-5.2" />
+                  </svg>
+                  <span class="text-sm leading-tight text-body"
+                    >A Brighter<br />Tomorrow</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Pricing ===== -->
+      <section class="py-6 lg:py-8" aria-label="Membership and coaching prices">
+        <div class="container">
+          <div
+            class="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.4fr)] lg:gap-5"
+          >
+            <!-- Community membership -->
+            <article
+              class="panel flex flex-col p-5 text-center xl:p-6"
+              data-animate="from-left"
+            >
+              <h2
+                class="text-base font-medium uppercase tracking-wide sm:text-lg"
+              >
+                Join Our Community
+              </h2>
+              <p class="price mt-2 justify-center text-6xl">
+                <span class="currency">$</span>97<span class="period"
+                  >/month</span
+                >
+              </p>
+              <p class="mt-3 text-lg font-bold leading-snug text-heading">
+                For Founding Members<br />Locked For Life
+              </p>
+              <ul
+                class="check-list mt-4 text-left text-[13px] text-body xl:text-sm"
+              >
+                <li>Small group support</li>
+                <li>Daily virtual meetings</li>
+                <li>Workshops &amp; guest speakers</li>
+                <li>A safe and supportive community</li>
+                <li>Real connections with people who truly get it</li>
+              </ul>
+              <div class="mt-auto pt-5">
+                <a href="#" class="btn-primary w-full"
+                  >7 Day Free Trial</a
+                >
+              </div>
+            </article>
+
+            <!-- 1 on 1 coaching -->
+            <div
+              class="panel flex flex-col p-4 sm:p-5"
+              data-animate="from-right"
+            >
+              <h2
+                class="text-center text-lg font-medium uppercase tracking-wide text-secondary sm:text-xl"
+              >
+                1 on 1 Coaching
+              </h2>
+              <div class="mt-4 grid flex-1 gap-3 md:grid-cols-3">
+                <article
+                  class="panel-inner flex flex-col p-4 text-center"
+                  data-animate="fade-up"
+                >
+                  <header class="flex min-h-14 flex-col justify-center">
+                    <h3 class="text-lg font-semibold">1 Session</h3>
+                  </header>
+                  <p class="price mt-2 justify-center text-4xl xl:text-5xl">
+                    <span class="currency">$</span>297
+                  </p>
+                  <ul
+                    class="check-list mt-4 text-left text-[13px] text-body xl:text-sm"
+                  >
+                    <li>Unlimited Email Support</li>
+                    <li>Individualized Assessment</li>
+                    <li>Private 1 on 1 Session</li>
+                  </ul>
+                  <div class="mt-auto pt-5">
+                    <a href="#" class="btn-primary w-full px-3 xl:px-6"
+                      >Book a Session</a
+                    >
+                  </div>
+                </article>
+
+                <article
+                  class="panel-inner flex flex-col p-4 text-center"
+                  data-animate="fade-up"
+                >
+                  <header class="flex min-h-14 flex-col justify-center">
+                    <h3 class="text-lg font-semibold">4 Sessions</h3>
+                    <p class="text-xs text-subtle">(15% Off)</p>
+                  </header>
+                  <p class="price mt-2 justify-center text-4xl xl:text-5xl">
+                    <span class="currency">$</span>1,010
+                  </p>
+                  <ul
+                    class="check-list mt-4 text-left text-[13px] text-body xl:text-sm"
+                  >
+                    <li>Unlimited Email Support</li>
+                    <li>Individualized Assessment</li>
+                    <li>Private 1 on 1 Session</li>
+                  </ul>
+                  <div class="mt-auto pt-5">
+                    <a href="#" class="btn-primary w-full px-3 xl:px-6"
+                      >Choose 4 Sessions</a
+                    >
+                  </div>
+                </article>
+
+                <article
+                  class="panel-inner flex flex-col p-4 text-center"
+                  data-animate="fade-up"
+                >
+                  <header class="flex min-h-14 flex-col justify-center">
+                    <h3 class="text-lg font-semibold">10 Sessions</h3>
+                    <p class="text-xs text-subtle">(20% Off)</p>
+                  </header>
+                  <p class="price mt-2 justify-center text-4xl xl:text-5xl">
+                    <span class="currency">$</span>2,376
+                  </p>
+                  <ul
+                    class="check-list mt-4 text-left text-[13px] text-body xl:text-sm"
+                  >
+                    <li>Unlimited Email Support</li>
+                    <li>Individualized Assessment</li>
+                    <li>Private 1 on 1 Session</li>
+                  </ul>
+                  <div class="mt-auto pt-5">
+                    <a href="#" class="btn-primary w-full px-3 xl:px-6"
+                      >Choose 10 Sessions</a
+                    >
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Benefits ===== -->
+      <section class="pb-6 lg:pb-8" aria-label="What you get">
+        <div class="container">
+          <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <li class="panel px-5 py-5 text-center" data-animate="fade-up">
+              <svg
+                class="mx-auto size-11 text-primary"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="8" r="3.4" />
+                <path
+                  d="M5.8 19.5c0-3.4 2.7-5.6 6.2-5.6s6.2 2.2 6.2 5.6v.5H5.8z"
+                />
+                <circle cx="4.9" cy="9.7" r="2.4" />
+                <path
+                  d="M.6 18.2c0-2.5 1.9-4.2 4.5-4.2.6 0 1.2.1 1.7.3-1 1-1.6 2.4-1.7 4v.2H.6z"
+                />
+                <circle cx="19.1" cy="9.7" r="2.4" />
+                <path
+                  d="M23.4 18.2c0-2.5-1.9-4.2-4.5-4.2-.6 0-1.2.1-1.7.3 1 1 1.6 2.4 1.7 4v.2h4.5z"
+                />
+              </svg>
+              <h3 class="mt-2 text-base font-semibold">Supportive Community</h3>
+              <p class="mt-1 text-sm leading-snug text-body">
+                Small groups, real connections, people who truly understand.
+              </p>
+            </li>
+            <li class="panel px-5 py-5 text-center" data-animate="fade-up">
+              <svg
+                class="mx-auto size-11 text-primary"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="4.5" y="4.5" width="15" height="11" rx="1.5" />
+                <path d="M2 19.5h20l-1.6-4H3.6z" />
+              </svg>
+              <h3 class="mt-2 text-base font-semibold">
+                Workshops &amp; Experts
+              </h3>
+              <p class="mt-1 text-sm leading-snug text-body">
+                Learn from guest speakers, join workshops, and gain practical
+                tools.
+              </p>
+            </li>
+            <li class="panel px-5 py-5 text-center" data-animate="fade-up">
+              <svg
+                class="mx-auto size-11 text-primary"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="3.5" y="5" width="17" height="15.5" rx="2" />
+                <path d="M8 3v4M16 3v4M3.5 10h17" />
+                <path
+                  d="M8 13.5h.01M12 13.5h.01M16 13.5h.01M8 17h.01M12 17h.01M16 17h.01"
+                  stroke-width="2.2"
+                />
+              </svg>
+              <h3 class="mt-2 text-base font-semibold">Structured Support</h3>
+              <p class="mt-1 text-sm leading-snug text-body">
+                Daily groups, special topics, and a positive, solution-focused
+                approach.
+              </p>
+            </li>
+            <li class="panel px-5 py-5 text-center" data-animate="fade-up">
+              <svg
+                class="mx-auto size-11 text-primary"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M21 8.25c0-2.49-2.1-4.5-4.69-4.5-1.93 0-3.6 1.12-4.31 2.73-.72-1.6-2.38-2.73-4.31-2.73C5.1 3.75 3 5.76 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+                />
+              </svg>
+              <h3 class="mt-2 text-base font-semibold">Brighter Tomorrow</h3>
+              <p class="mt-1 text-sm leading-snug text-body">
+                Build friendships, regain confidence, and create a life you
+                love.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ===== About ===== -->
+      <section class="py-8 lg:py-12" aria-labelledby="about-title">
+        <div class="container">
+          <div
+            class="grid items-center gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16"
+          >
+            <figure class="media-card m-0" data-animate="from-left">
+              <img
+                src="assets/images/We-Celebrate.webp"
+                alt="A calm mountain lake surrounded by pine forest"
+                loading="lazy"
+              />
+              <figcaption
+                class="script-caption absolute bottom-5 left-5 max-w-[48%]"
+              >
+                We Celebrate Windows Together But Ride the Waves Together Too!
+              </figcaption>
+            </figure>
+
+            <div>
+              <p class="sub-title" data-animate="fade-up">
+                More than a community
+              </p>
+              <h2 id="about-title" class="mt-2" data-animate="fade-up">
+                A Place to Heal, Connect <br class="hidden xl:block" />and Move
+                Forward.
+              </h2>
+              <p
+                class="mt-3 text-base leading-relaxed text-body"
+                data-animate="fade-up"
+              >
+                Benzos Unchained is a positive, connection-first community for
+                people navigating benzodiazepine recovery. We offer small group
+                support, expert-led workshops, and a judgment-free space to
+                share, grow, and build real friendships.
+              </p>
+              <ul
+                class="check-list mt-4 text-sm text-body sm:text-base"
+                data-animate="fade-up"
+              >
+                <li>Live group sessions (small &amp; supportive)</li>
+                <li>Access to guest experts and monthly workshops</li>
+                <li>A community that truly understands</li>
+                <li>Tools, resources, and hope for the road ahead</li>
+              </ul>
+              <div class="mt-6" data-animate="fade-up">
+                <a href="#" class="btn-primary">Join Our Community</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Closing call-out ===== -->
+      <section
+        class="cta-band relative py-9 text-center lg:py-11"
+        aria-labelledby="cta-title"
+      >
+        <div class="absolute inset-0 -z-10">
+          <img
+            class="w-full h-full object-cover object-center"
+            src="assets/images/Real-People.webp"
+            alt=""
+          />
+        </div>
+        <div class="container">
+          <div
+            class="p-6 text-center mx-auto max-w-3xl px-2 sm:px-6 lg:px-0 bg-white/70 rounded-xl"
+            data-animate="zoom-in"
+          >
+            <h2 id="cta-title" class="text-xl sm:text-2xl">
+              Real People. Real Support. A Brighter Tomorrow.
+            </h2>
+            <p
+              class="mx-auto mt-2 max-w-2xl text-sm leading-relaxed text-body sm:text-base"
+            >
+              Whether you’re just starting to explore your options or you’re
+              ready to take the next step, we’re here for you.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer class="py-8 bg-primary text-white">
+      <div class="container" data-animate="fade-up">
+        <div
+          class="flex flex-col items-center gap-6 md:flex-row md:justify-between"
+        >
+          <div
+            class="flex flex-col items-center gap-4 text-center sm:flex-row sm:gap-6 sm:text-left"
+          >
+            <a
+              href="index.html"
+              class="inline-block w-44 shrink-0 rounded-xl bg-white p-2"
+            >
+              <img
+                class="h-full w-full object-contain object-center"
+                src="assets/images/logo.webp"
+                alt="Benzos Unchained logo"
+              />
+            </a>
+            <p
+              class="leading-relaxed text-(--text-on-dark-muted) sm:border-l sm:border-white/25 sm:py-1 sm:pl-6 sm:text-base"
+            >
+              Freedom from benzos is possible.<br />Let’s take the next step
+              together.
+            </p>
+          </div>
+
+          <ul class="flex items-center gap-5" aria-label="Social media">
+            <li>
+              <a
+                href="http://facebook.com/"
+                target="_blank"
+                aria-label="Facebook"
+                class="grid size-11 place-items-center rounded-full text-white transition hover:bg-white/15"
+              >
+                <svg
+                  class="size-7"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M13.6 21v-8.1h2.7l.4-3.2h-3.1V7.7c0-.9.3-1.5 1.6-1.5h1.7V3.3c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.4H7.8v3.2h2.7V21h3.1Z"
+                  />
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                aria-label="Instagram"
+                class="grid size-11 place-items-center rounded-full text-white transition hover:bg-white/15"
+              >
+                <svg
+                  class="size-7"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  aria-hidden="true"
+                >
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4.2" />
+                  <circle
+                    cx="17.4"
+                    cy="6.6"
+                    r="1.1"
+                    fill="currentColor"
+                    stroke="none"
+                  />
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.youtube.com/@Benzosunchained"
+                target="_blank"
+                aria-label="YouTube"
+                class="grid size-11 place-items-center rounded-full text-white transition hover:bg-white/15"
+              >
+                <svg
+                  class="size-8"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M21.6 7.2a2.5 2.5 0 0 0-1.76-1.77C18.3 5 12 5 12 5s-6.3 0-7.84.43A2.5 2.5 0 0 0 2.4 7.2C2 8.76 2 12 2 12s0 3.24.4 4.8a2.5 2.5 0 0 0 1.76 1.77C5.7 19 12 19 12 19s6.3 0 7.84-.43a2.5 2.5 0 0 0 1.76-1.77C22 15.24 22 12 22 12s0-3.24-.4-4.8ZM10 15V9l5.2 3-5.2 3Z"
+                  />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <hr class="my-6 border-white/20" />
+
+        <div
+          class="flex flex-col items-center gap-4 text-sm lg:flex-row lg:justify-between"
+        >
+          <nav
+            aria-label="Footer"
+            class="flex flex-wrap justify-center divide-x divide-white/40 gap-y-2.5"
+          >
+            <a href="#" class="px-3 first:pl-0 hover:underline">Home</a>
+            <a href="#" class="px-3 hover:underline">Why Us?</a>
+            <a href="#" class="px-3 hover:underline">Get Coaching</a>
+            <a href="#" class="px-3 hover:underline">FAQ</a>
+            <a href="#" class="px-3 hover:underline">About</a>
+            <a href="#" class="px-3 hover:underline">Community</a>
+            <a href="#" class="px-3 last:pr-0 hover:underline">Contact Us</a>
+          </nav>
+          <p class="text-center text-(--text-on-dark-muted)">
+            &copy; <span data-year>2026</span> Benzos Unchained. All rights
+            reserved.
+          </p>
+        </div>
+
+        <hr class="my-6 border-white/20" />
+
+        <div>
+          <h3 class="mb-4 text-sm font-semibold text-white md:text-base">
+            Medical Disclaimer & Waiver of Liability
+          </h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-2">
+            <!-- Item 1 -->
+            <div
+              class="py-4 lg:border-r lg:border-white/15 lg:px-4 lg:py-0 lg:first:pl-0"
+            >
+              <h4 class="mb-2 text-sm font-semibold leading-snug text-white">
+                1. Not Medical or Clinical Advice
+              </h4>
+
+              <p class="text-[13px] leading-[1.55] text-white/70">
+                The information, discussions, peer stories, and resources
+                provided within this virtual community—including all text,
+                graphics, video calls, forum posts, and messages—are for
+                educational and peer-support purposes only. This community is
+                peer-moderated and does not provide professional medical advice,
+                diagnosis, treatment, or mental health therapy.
+              </p>
+            </div>
+
+            <!-- Item 2 -->
+            <div
+              class="border-t border-white/15 py-4 md:border-t-0 lg:border-r lg:px-4 lg:py-0"
+            >
+              <h4 class="mb-2 text-sm font-semibold leading-snug text-white">
+                2. Consult a Qualified Healthcare Professional
+              </h4>
+
+              <p class="text-[13px] leading-[1.55] text-white/70">
+                Always seek the advice of a licensed physician, psychiatrist, or
+                other qualified healthcare provider with any questions you may
+                have regarding a medical condition, substance dependency,
+                tapering protocol, or withdrawal.
+              </p>
+            </div>
+
+            <!-- Item 3 -->
+            <div
+              class="border-t border-white/15 py-4 md:border-t lg:border-r lg:border-t-0 lg:px-4 lg:py-0"
+            >
+              <h4 class="mb-2 text-sm font-semibold leading-snug text-white">
+                3. Risks of Benzodiazepine Withdrawal & Tapering
+              </h4>
+
+              <p class="text-[13px] leading-[1.55] text-white/70">
+                Discontinuing or rapidly reducing benzodiazepines can cause
+                severe, life-threatening withdrawal symptoms, including
+                seizures. Do not modify your medication dose or stop taking any
+                prescription medication without the direct supervision and
+                guidance of a qualified healthcare provider.
+              </p>
+            </div>
+
+            <!-- Item 4 -->
+            <div
+              class="border-t border-white/15 py-4 lg:border-r lg:border-t-0 lg:px-4 lg:py-0"
+            >
+              <h4 class="mb-2 text-sm font-semibold leading-snug text-white">
+                4. Personal Responsibility & Release of Liability
+              </h4>
+
+              <p class="text-[13px] leading-[1.55] text-white/70">
+                Participation in this online community is entirely voluntary.
+                You assume full, personal responsibility for how you choose to
+                use any information found here. By using this platform, you
+                agree to release this community, its founders, moderators, and
+                volunteers from any and all liability or damages.
+              </p>
+            </div>
+
+            <!-- Item 5 -->
+            <div
+              class="border-t border-white/15 py-4 md:col-span-2 lg:col-span-1 lg:border-t-0 lg:px-4 lg:py-0 lg:pr-0"
+            >
+              <h4 class="mb-2 text-sm font-semibold leading-snug text-white">
+                5. Emergency & Crisis Protocols
+              </h4>
+
+              <p class="text-[13px] leading-[1.55] text-white/70">
+                This virtual community is not a crisis intervention service and
+                is not monitored 24/7. If you are experiencing a medical
+                emergency, severe withdrawal symptoms, or thoughts of self-harm,
+                please immediately contact your local emergency services or a
+                crisis hotline.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/scroll-animations.js"></script>
+    <script src="assets/js/hero-video.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/flowbite.min.js"></script>
+    <script src="assets/js/custom-script.js"></script>
+  </body>
+</html>

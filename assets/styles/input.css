@@ -1,0 +1,1026 @@
+@import "tailwindcss";
+@import "flowbite/src/themes/default";
+
+/* Flowbite's JS adds Tailwind classes at runtime (drawer backdrop z-30 /
+   bg-dark-backdrop, body overflow-hidden, ...). Tailwind never scans
+   node_modules, so those classes are missing unless we point it at the file. */
+@source "../../node_modules/flowbite/dist/flowbite.min.js";
+
+/* ==========================================================================
+   1. DESIGN TOKENS
+   Every colour used on the site lives here. Change a value once and the whole
+   page (and the Flowbite components) follow.
+   ========================================================================== */
+:root {
+  /* ---------- Brand: dark navy ---------- */
+  --primary-color: #0d3a6b; /* announcement bar, footer, primary buttons */
+  --primary-dark: #092c52;
+  --primary-light: #1d5a9e;
+
+  /* ---------- Brand: bright blue ---------- */
+  --secondary-color: #1f8fe0; /* eyebrows, "1 on 1 coaching", accents */
+  --secondary-dark: #1673bd;
+  --secondary-light: #5db3ee;
+
+  /* ---------- Backgrounds ---------- */
+  --white: #ffffff;
+  --soft-white: #f6fafe;
+  --light-bg: #e4f2fd; /* cards + panels (light sky blue) */
+  --light-bg-alt: #d4e9fa;
+  --sky-bg: #cfe6f8; /* hero sky */
+  --surface-glass: rgba(255, 255, 255, 0.72); /* cards sitting on a panel */
+
+  /* ---------- Text ---------- */
+  --heading-color: #14336f;
+  --text-color: #33465e;
+  --text-muted: #5f7189;
+  --text-on-dark: #ffffff;
+  --text-on-dark-muted: rgba(255, 255, 255, 0.82);
+
+  /* ---------- Borders ---------- */
+  --border-color: #cfe2f4;
+  --border-strong: #a9c9e8;
+  --border-on-dark: rgba(255, 255, 255, 0.22);
+
+  /* ---------- Buttons ---------- */
+  --btn-primary-bg: var(--primary-color);
+  --btn-primary-text: var(--white);
+  --btn-primary-hover-bg: var(--primary-light);
+  --btn-outline-bg: var(--white);
+  --btn-outline-text: var(--primary-color);
+  --btn-outline-border: var(--primary-color);
+  --btn-outline-hover-bg: var(--primary-color);
+  --btn-outline-hover-text: var(--white);
+  --btn-light-bg: var(--white); /* buttons on the navy announcement bar */
+  --btn-light-text: var(--primary-color);
+  --btn-light-hover-bg: var(--light-bg-alt);
+  /* glossy gold "Join Now" pill */
+  --btn-join-top: #fdd94f;
+  --btn-join-mid: #f5b91a;
+  --btn-join-bottom: #d99a0c;
+  --btn-join-rim: #e9ae1c;
+  --btn-join-text: #1c1205;
+  --btn-join-inner-light: rgba(255, 255, 255, 0.6);
+  --btn-join-inner-dark: rgba(140, 90, 0, 0.35);
+  --btn-join-gloss-top: rgba(255, 255, 255, 0.6);
+  --btn-join-gloss-bottom: rgba(255, 255, 255, 0.12);
+  --btn-join-shadow: rgba(146, 98, 0, 0.4);
+  /* orange "7 Day Free Trial" pill with a black metallic rim */
+  --btn-trial-top: #ffc700;
+  --btn-trial-mid: #ffb000;
+  --btn-trial-bottom: #ff9600;
+  --btn-trial-inner-shade: rgba(122, 78, 0, 0.5);
+  --btn-trial-rim-dark: #121212;
+  --btn-trial-rim-light: #8f8f8f;
+  --btn-trial-text: var(--white);
+  --btn-trial-text-edge: #b56b00;
+  --btn-trial-shadow: rgba(0, 0, 0, 0.28);
+
+  /* ---------- Gradients ---------- */
+  --gradient-primary: linear-gradient(
+    135deg,
+    var(--primary-dark),
+    var(--primary-light)
+  );
+  --gradient-sky: linear-gradient(
+    180deg,
+    var(--sky-bg) 0%,
+    var(--light-bg) 55%,
+    var(--white) 100%
+  );
+  --gradient-hero-fade: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 72%,
+    var(--white) 100%
+  );
+  --gradient-panel: linear-gradient(
+    180deg,
+    var(--light-bg),
+    color-mix(in srgb, var(--light-bg) 70%, var(--light-bg-alt))
+  );
+  --gradient-cta: linear-gradient(180deg, var(--sky-bg), var(--light-bg));
+  /* white mist laid over the hero photo so the copy stays readable */
+  --gradient-hero-mist: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.82) 36%,
+    rgba(255, 255, 255, 0.93) 100%
+  ); /* stacked layout: photo shows behind the video, mist behind the copy */
+  --gradient-hero-mist-wide: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.06) 22%,
+    rgba(255, 255, 255, 0.82) 52%,
+    rgba(255, 255, 255, 0.9) 70%,
+    rgba(255, 255, 255, 0.58) 100%
+  ); /* side-by-side layout: clear behind the video, misty behind the copy */
+
+  /* ---------- Shadows ---------- */
+  --shadow-color: rgba(13, 58, 107, 0.16);
+  --shadow-card: 0 10px 30px var(--shadow-color);
+  --shadow-button: 0 10px 22px var(--shadow-color);
+  --overlay-backdrop: rgba(
+    9,
+    44,
+    82,
+    0.6
+  ); /* mobile menu overlay (navy tint) */
+  --overlay-dark: rgba(6, 20, 36, 0.55); /* video play button */
+  --overlay-text-shadow: 0 2px 10px rgba(6, 20, 36, 0.55);
+
+  /* ---------- Video player ---------- */
+  --video-backdrop: #000000; /* letterbox colour in full screen */
+  --video-controls-gradient: linear-gradient(
+    to top,
+    rgba(6, 20, 36, 0.88),
+    rgba(6, 20, 36, 0)
+  );
+  --video-track: rgba(255, 255, 255, 0.3);
+  --video-buffered: rgba(255, 255, 255, 0.5);
+  --video-fill: var(--white);
+
+  /* ---------- Fonts ---------- */
+  --font-body: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-handwritten: "Kaushan Script", "Brush Script MT", cursive;
+}
+
+/* Expose the tokens to Tailwind so utilities such as bg-primary, text-heading,
+   border-line and font-script work. `inline` keeps them pointing
+   at the variables above. Flowbite's own brand/heading/body tokens are pointed
+   at the same palette so Flowbite components match. */
+@theme inline {
+  --font-sans: var(--font-body);
+  --font-script: var(--font-handwritten);
+
+  --color-primary: var(--primary-color);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
+  --color-secondary: var(--secondary-color);
+  --color-secondary-dark: var(--secondary-dark);
+  --color-secondary-light: var(--secondary-light);
+
+  --color-soft: var(--soft-white);
+  --color-mist: var(--light-bg);
+  --color-mist-alt: var(--light-bg-alt);
+  --color-glass: var(--surface-glass);
+
+  --color-heading: var(--heading-color);
+  --color-body: var(--text-color);
+  --color-subtle: var(--text-muted);
+  --color-line: var(--border-color);
+  --color-line-strong: var(--border-strong);
+
+  --color-brand: var(--primary-color);
+  --color-brand-strong: var(--primary-dark);
+  --color-brand-soft: var(--light-bg-alt);
+  --color-brand-softer: var(--light-bg);
+}
+
+/* ==========================================================================
+   2. BASE
+   ========================================================================== */
+html {
+  scroll-behavior: smooth;
+}
+body {
+  position: relative;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-color);
+  background-color: var(--white);
+  box-sizing: border-box;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  box-sizing: border-box;
+}
+.sectionWidth {
+  width: 100%;
+  max-width: 896px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.sectionPadding {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+iframe,
+video,
+img {
+  max-width: 100%;
+}
+button,
+a {
+  outline: none;
+}
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+}
+
+/* ── Auto zoom in/out pulse (WhatsApp CTA box) ───────────────── */
+@keyframes zoomPulse {
+  0%,
+  100% {
+    transform: scale(0.95);
+  }
+  50% {
+    transform: scale(1);
+  }
+}
+.zoom-pulse {
+  animation: zoomPulse 2.5s ease-in-out infinite;
+}
+/* Headings live in the base layer so Tailwind utilities (text-lg, etc.) can
+   still override them on a per-element basis. */
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--heading-color);
+  }
+  .h1,
+  h1 {
+    font-size: clamp(30px, 3.4vw, 46px);
+    line-height: 1.12;
+  }
+  .h2,
+  h2 {
+    font-size: clamp(26px, 2.6vw, 36px);
+  }
+  .h3,
+  h3 {
+    font-size: clamp(20px, 2vw, 26px);
+  }
+  .h4,
+  h4 {
+    font-size: clamp(18px, 1.8vw, 22px);
+  }
+  .h5,
+  h5 {
+    font-size: clamp(16px, 1.5vw, 19px);
+  }
+  .h6,
+  h6 {
+    font-size: 16px;
+  }
+}
+
+.scrollbarHide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbarHide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.column-gap {
+  gap: 32px;
+}
+
+/* ----- Mobile menu overlay ------------------------------------------------
+   The header is `sticky z-40`, which makes it its own stacking context: the
+   drawer inside it can never sit above a page-level backdrop, and that backdrop
+   (z-30) sits *under* the header bar, leaving the bar undimmed. So the dimming
+   is painted by the open drawer itself (a huge spread shadow inside the header's
+   stacking context), which covers the header bar and the page alike.
+   Flowbite's own <div drawer-backdrop> stays as an invisible click-catcher so
+   tapping outside the drawer still closes it. */
+[drawer-backdrop] {
+  background-color: transparent;
+}
+/* Keep this breakpoint in step with the header: the menu is a drawer below
+   `xl` (80rem = 1280px) and a normal row from there up. */
+@media (width < 80rem) {
+  #mobileMenuDrawer {
+    box-shadow: 0 0 0 100vmax transparent;
+    transition-property: transform, translate, box-shadow;
+  }
+  #mobileMenuDrawer[aria-modal="true"] {
+    box-shadow: 0 0 0 100vmax var(--overlay-backdrop);
+  }
+}
+
+/* ==========================================================================
+   3. COMPONENTS
+   ========================================================================== */
+@layer components {
+  /* ----- Buttons -------------------------------------------------------- */
+  .btn-primary,
+  .btn_primary, /* class name used by the header markup */
+  .btn-outline,
+  .btn-light,
+  .btn-join,
+  .btn-trial {
+    min-height: 44px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9375rem;
+    line-height: 1.2;
+    font-weight: 600;
+    border: 1.5px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    transition:
+      background-color 250ms ease,
+      color 250ms ease,
+      border-color 250ms ease,
+      transform 250ms ease,
+      box-shadow 250ms ease;
+  }
+  .btn-primary,
+  .btn_primary {
+    color: var(--btn-primary-text);
+    background-color: var(--btn-primary-bg);
+    border-color: var(--btn-primary-bg);
+  }
+  .btn-primary:hover,
+  .btn_primary:hover {
+    background-color: var(--btn-primary-hover-bg);
+    border-color: var(--btn-primary-hover-bg);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-button);
+  }
+  .btn-outline {
+    color: var(--btn-outline-text);
+    background-color: var(--btn-outline-bg);
+    border-color: var(--btn-outline-border);
+  }
+  .btn-outline:hover {
+    color: var(--btn-outline-hover-text);
+    background-color: var(--btn-outline-hover-bg);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-button);
+  }
+  .btn-light {
+    color: var(--btn-light-text);
+    background-color: var(--btn-light-bg);
+  }
+  .btn-light:hover {
+    background-color: var(--btn-light-hover-bg);
+  }
+  /* compact sizes: header button + announcement bar buttons */
+  .btn_primary {
+    min-height: 40px;
+    padding: 0.4rem 1.25rem;
+    font-size: 0.875rem;
+  }
+  .btn-sm {
+    min-height: 28px;
+    padding: 0.3rem 1rem;
+    font-size: 0.875rem;
+    border-radius: 6px;
+  }
+
+  /* ----- "Join Now": glossy gold pill --------------------------------------
+     Amber gradient, bright bevel along the top edge, darker depth at the
+     bottom and a lighter "gel" highlight over the upper half (::before).
+     Works at any size, e.g. `btn-join btn-sm` on the announcement bar. */
+  .btn-join {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    color: var(--btn-join-text);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: linear-gradient(
+      180deg,
+      var(--btn-join-top) 0%,
+      var(--btn-join-mid) 52%,
+      var(--btn-join-bottom) 100%
+    );
+    border: 2px solid var(--btn-join-rim);
+    border-radius: 9999px;
+    box-shadow:
+      inset 0 1px 0 var(--btn-join-inner-light),
+      inset 0 -2px 3px var(--btn-join-inner-dark),
+      0 3px 8px var(--btn-join-shadow);
+    transition:
+      transform 250ms ease,
+      box-shadow 250ms ease,
+      filter 250ms ease;
+  }
+  .btn-join::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    right: 7%;
+    left: 7%;
+    z-index: -1;
+    height: 46%;
+    background: linear-gradient(
+      180deg,
+      var(--btn-join-gloss-top),
+      var(--btn-join-gloss-bottom)
+    );
+    border-radius: 9999px;
+    pointer-events: none;
+  }
+  .btn-join:hover {
+    filter: brightness(1.07) saturate(1.05);
+    transform: translateY(-2px);
+    box-shadow:
+      inset 0 1px 0 var(--btn-join-inner-light),
+      inset 0 -2px 3px var(--btn-join-inner-dark),
+      0 7px 16px var(--btn-join-shadow);
+  }
+  .btn-join:active {
+    filter: brightness(0.96);
+    transform: translateY(0);
+    box-shadow:
+      inset 0 2px 4px var(--btn-join-inner-dark),
+      0 1px 3px var(--btn-join-shadow);
+  }
+
+  /* ----- "7 Day Free Trial": orange pill in a black metallic rim -----------
+     Two backgrounds: the orange gradient fills the padding box, a horizontal
+     dark-to-grey gradient shows through the transparent border as the rim
+     (lighter at both ends). A darker inner shade runs along the top, and the
+     white text carries a dark-amber offset edge. */
+  .btn-trial {
+    padding-right: 2rem;
+    padding-left: 2rem;
+    color: var(--btn-trial-text);
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    text-shadow:
+      0.06em 0.06em 0 var(--btn-trial-text-edge),
+      0.11em 0.11em 0 var(--btn-trial-text-edge);
+    border: 4px solid transparent;
+    border-radius: 9999px;
+    background:
+      linear-gradient(
+          180deg,
+          var(--btn-trial-top) 0%,
+          var(--btn-trial-mid) 45%,
+          var(--btn-trial-bottom) 100%
+        )
+        padding-box,
+      linear-gradient(
+          90deg,
+          var(--btn-trial-rim-light) 0%,
+          var(--btn-trial-rim-dark) 16%,
+          var(--btn-trial-rim-dark) 84%,
+          var(--btn-trial-rim-light) 100%
+        )
+        border-box;
+    box-shadow:
+      inset 0 5px 4px -2px var(--btn-trial-inner-shade),
+      0 4px 10px var(--btn-trial-shadow);
+    transition:
+      transform 250ms ease,
+      box-shadow 250ms ease,
+      filter 250ms ease;
+  }
+  .btn-trial.btn-sm {
+    border-width: 3px; /* slimmer rim on the small announcement-bar size */
+  }
+  .btn-trial:hover {
+    filter: brightness(1.08);
+    transform: translateY(-2px);
+    box-shadow:
+      inset 0 5px 4px -2px var(--btn-trial-inner-shade),
+      0 8px 16px var(--btn-trial-shadow);
+  }
+  .btn-trial:active {
+    filter: brightness(0.96);
+    transform: translateY(0);
+    box-shadow:
+      inset 0 5px 6px -1px var(--btn-trial-inner-shade),
+      0 1px 3px var(--btn-trial-shadow);
+  }
+
+  /* ----- Small eyebrow label above headings ------------------------------ */
+  .sub-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--secondary-color);
+  }
+
+  /* ----- Light-blue card / panel ------------------------------------------ */
+  .panel {
+    background: var(--gradient-panel);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+  }
+  .panel-inner {
+    background: var(--surface-glass);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+  }
+
+  /* ----- Round check bullets --------------------------------------------- */
+  .check-list {
+    display: grid;
+    gap: 0.5rem;
+  }
+  .check-list li {
+    position: relative;
+    padding-left: 1.75rem;
+    line-height: 1.35;
+  }
+  .check-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.05em;
+    width: 1.2em;
+    height: 1.2em;
+    background-color: var(--check-color, var(--primary-color));
+    -webkit-mask: var(--check-icon) center / contain no-repeat;
+    mask: var(--check-icon) center / contain no-repeat;
+    --check-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z'/%3E%3C/svg%3E");
+  }
+
+  /* ----- Price: small "$", big number, optional "/month" ------------------- */
+  .price {
+    display: inline-flex;
+    align-items: flex-start;
+    line-height: 1;
+    font-weight: 800;
+    color: var(--heading-color);
+  }
+  .price .currency {
+    margin: 0.14em 0.06em 0 0;
+    font-size: 0.42em;
+    font-weight: 700;
+  }
+  .price .period {
+    align-self: flex-end;
+    margin: 0 0 0.2em 0.35em;
+    font-size: 0.28em;
+    font-weight: 500;
+    color: var(--text-color);
+  }
+
+  /* ----- Framed media (hero video link + community photo) ----------------- */
+  .media-card {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    border: 2px solid var(--white);
+    border-radius: 10px;
+    background-color: var(--primary-dark);
+    box-shadow: var(--shadow-card);
+  }
+  .media-card > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .script-caption {
+    font-family: var(--font-handwritten);
+    font-size: clamp(1.15rem, 2.1vw, 1.75rem);
+    line-height: 1.15;
+    color: var(--text-on-dark);
+    text-shadow: var(--overlay-text-shadow);
+    transform: rotate(-8deg);
+    transform-origin: left bottom;
+    pointer-events: none;
+  }
+  /* ----- Hero video player -------------------------------------------------
+     Autoplays muted. First click on the picture turns the sound on; after that
+     a click plays / pauses. State lives in data-* attributes set by
+     assets/js/hero-video.js: data-state (playing | paused | error),
+     data-muted, data-sound-hint, data-icon (play | sound), data-fullscreen. */
+  /* The video is NEVER cropped, exactly like YouTube: `contain` shows the whole
+     picture, and if the box and the picture ever differ in shape the gap is
+     black bars (the black backdrop below), never a cut-off edge. */
+  .media-card > video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .video-player {
+    /* The card takes the shape of the video inside it. --video-ratio
+       (width / height) is read from the file by hero-video.js; the value in
+       the HTML is only the starting guess. content-box makes aspect-ratio and
+       the height cap apply to the PICTURE itself, with the white border sitting
+       outside it, so the picture fills the card exactly (no bars, no cropping).
+       The height is capped so a tall vertical video cannot make the hero huge. */
+    --video-max-h: min(75vh, 36rem);
+    box-sizing: content-box;
+    aspect-ratio: var(--video-ratio, 1.7778);
+    width: 100%;
+    max-width: min(
+      calc(100% - 4px),
+      calc(var(--video-max-h) * var(--video-ratio, 1.7778))
+    );
+    margin-inline: auto;
+    background-color: var(--video-backdrop);
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .video-player[data-shape="portrait"] {
+    width: calc(var(--video-max-h) * var(--video-ratio, 0.5625));
+  }
+  .video-player:fullscreen {
+    width: 100vw;
+    max-width: none;
+    height: 100vh;
+    margin: 0;
+    aspect-ratio: auto;
+    border: 0;
+    border-radius: 0;
+    background-color: var(--video-backdrop);
+  }
+  .video-player:fullscreen > video {
+    object-fit: contain;
+  }
+  .video-player:-webkit-full-screen {
+    width: 100vw;
+    max-width: none;
+    height: 100vh;
+    margin: 0;
+    aspect-ratio: auto;
+    border: 0;
+    border-radius: 0;
+    background-color: var(--video-backdrop);
+  }
+  .video-player:-webkit-full-screen > video {
+    object-fit: contain;
+  }
+
+  /* click / tap surface + the big centre icon */
+  .video-surface {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+  }
+  .video-flash {
+    position: absolute;
+    top: 46%;
+    left: 50%;
+    display: grid;
+    place-items: center;
+    width: clamp(54px, 8vw, 76px);
+    aspect-ratio: 1;
+    color: var(--text-on-dark);
+    background-color: var(--overlay-dark);
+    border: 3px solid var(--text-on-dark);
+    border-radius: 9999px;
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+    transition:
+      opacity 250ms ease,
+      transform 250ms ease;
+    pointer-events: none;
+  }
+  .video-flash svg {
+    display: none;
+    width: 42%;
+    height: 42%;
+  }
+  .video-flash .flash-play {
+    margin-left: 6%; /* optical centring of the triangle */
+  }
+  .video-player[data-icon="play"] .flash-play,
+  .video-player[data-icon="sound"] .flash-sound {
+    display: block;
+  }
+  .video-player[data-state="paused"] .video-flash,
+  .video-player.is-flash .video-flash {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  /* "Click for sound" pill while the autoplay is still silent */
+  .video-sound-hint {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.8rem 0.4rem 0.65rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--text-on-dark);
+    background-color: var(--overlay-dark);
+    border-radius: 9999px;
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    transition: opacity 250ms ease;
+    pointer-events: none;
+  }
+  .video-player[data-sound-hint="true"] .video-sound-hint {
+    opacity: 1;
+  }
+  .video-sound-hint .hint-tap {
+    display: none;
+  }
+  @media (hover: none) {
+    .video-sound-hint .hint-click {
+      display: none;
+    }
+    .video-sound-hint .hint-tap {
+      display: inline;
+    }
+  }
+
+  /* control bar: visible while paused, while the visitor is active (mouse
+     move, tap, keyboard) and while it has keyboard focus; fades away when idle */
+  .video-controls {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 2rem 0.625rem 0.5rem;
+    color: var(--text-on-dark);
+    background: var(--video-controls-gradient);
+    opacity: 0;
+    transition: opacity 250ms ease;
+    pointer-events: none;
+  }
+  .video-player[data-state="paused"] .video-controls,
+  .video-player.is-active .video-controls,
+  .video-controls:focus-within {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .video-btn {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+    color: inherit;
+    background: transparent;
+    border: 0;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background-color 200ms ease;
+  }
+  .video-btn:hover {
+    background-color: var(--video-track);
+  }
+  .video-btn svg {
+    width: 1.35rem;
+    height: 1.35rem;
+  }
+  .video-btn .icon-pause,
+  .video-btn .icon-muted,
+  .video-btn .icon-fs-exit {
+    display: none;
+  }
+  .video-player[data-state="playing"] .icon-play,
+  .video-player[data-muted="true"] .icon-vol,
+  .video-player[data-fullscreen="true"] .icon-fs-enter {
+    display: none;
+  }
+  .video-player[data-state="playing"] .icon-pause,
+  .video-player[data-muted="true"] .icon-muted,
+  .video-player[data-fullscreen="true"] .icon-fs-exit {
+    display: block;
+  }
+  .video-time {
+    flex: none;
+    padding: 0 0.25rem;
+    font-size: 0.8125rem;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .video-seek {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .video-volume {
+    display: flex;
+    flex: none;
+    align-items: center;
+  }
+
+  /* sliders (seek + volume): white fill, lighter buffered part, dot on hover */
+  .video-range {
+    --fill: 0%;
+    --buffer: 0%;
+    appearance: none;
+    -webkit-appearance: none;
+    height: 1.5rem;
+    margin: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+  .video-range::-webkit-slider-runnable-track {
+    height: 4px;
+    border-radius: 9999px;
+    background: linear-gradient(
+      to right,
+      var(--video-fill) var(--fill),
+      var(--video-buffered) var(--fill),
+      var(--video-buffered) var(--buffer),
+      var(--video-track) var(--buffer)
+    );
+  }
+  .video-range::-moz-range-track {
+    height: 4px;
+    border-radius: 9999px;
+    background: linear-gradient(
+      to right,
+      var(--video-fill) var(--fill),
+      var(--video-buffered) var(--fill),
+      var(--video-buffered) var(--buffer),
+      var(--video-track) var(--buffer)
+    );
+  }
+  .video-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    margin-top: -5px;
+    background: var(--video-fill);
+    border: 0;
+    border-radius: 9999px;
+    transform: scale(0);
+    transition: transform 150ms ease;
+  }
+  .video-range::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    background: var(--video-fill);
+    border: 0;
+    border-radius: 9999px;
+    transform: scale(0);
+    transition: transform 150ms ease;
+  }
+  .video-controls:hover .video-range::-webkit-slider-thumb,
+  .video-range:focus-visible::-webkit-slider-thumb,
+  .video-range:active::-webkit-slider-thumb {
+    transform: scale(1);
+  }
+  .video-controls:hover .video-range::-moz-range-thumb,
+  .video-range:focus-visible::-moz-range-thumb,
+  .video-range:active::-moz-range-thumb {
+    transform: scale(1);
+  }
+  .video-range:focus-visible {
+    outline-offset: 2px;
+  }
+  /* volume slider slides out next to the speaker button (mouse devices only;
+     touch screens use the hardware volume keys) */
+  .video-vol {
+    width: 0;
+    opacity: 0;
+    transition:
+      width 200ms ease,
+      opacity 200ms ease;
+  }
+  .video-volume:hover .video-vol,
+  .video-volume:focus-within .video-vol {
+    width: 4.5rem;
+    margin-right: 0.5rem;
+    margin-left: 0.25rem;
+    opacity: 1;
+  }
+  @media (hover: none) {
+    .video-volume .video-vol {
+      display: none;
+    }
+  }
+
+  /* video file missing / failed to load: keep the poster, drop the player UI */
+  .video-player[data-state="error"] .video-surface,
+  .video-player[data-state="error"] .video-controls,
+  .video-player[data-state="error"] .video-sound-hint {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   4. PAGE SECTIONS
+   ========================================================================== */
+.hero {
+  background: var(--gradient-sky); /* shows only if the photo fails to load */
+}
+.hero-mist {
+  background: var(--gradient-hero-mist);
+}
+@media (width >= 64rem) {
+  /* a vertical video is narrow: size its column to the video, centre the pair */
+  .hero-grid:has([data-shape="portrait"]) {
+    grid-template-columns: auto minmax(0, 40rem);
+    justify-content: center;
+  }
+}
+@media (width >= 64rem) {
+  .hero-mist {
+    background: var(--gradient-hero-mist-wide), var(--gradient-hero-fade);
+  }
+}
+
+/* ==========================================================================
+   SCROLL ANIMATIONS
+   Elements with data-animate start hidden and play their entrance every time
+   they scroll into view (assets/js/custom-script.js adds/removes .is-visible).
+   Only active while <html> has .motion-ok, which the inline script in <head>
+   sets when JS is running and the visitor has NOT asked for reduced motion.
+
+   data-animate="fade-up | from-left | from-right | zoom-in | fade"
+   data-delay="200"   optional fixed delay in ms (otherwise items that enter
+                      together are staggered automatically)
+   ========================================================================== */
+[data-animate="fade-up"] {
+  --reveal-y: 36px;
+}
+[data-animate="from-left"] {
+  --reveal-x: -48px;
+}
+[data-animate="from-right"] {
+  --reveal-x: 48px;
+}
+[data-animate="zoom-in"] {
+  --reveal-y: 18px;
+  --reveal-scale: 0.94;
+}
+.motion-ok [data-animate]:not(.is-visible) {
+  opacity: 0;
+  transform: translate3d(var(--reveal-x, 0px), var(--reveal-y, 0px), 0)
+    scale(var(--reveal-scale, 1));
+  will-change: opacity, transform;
+}
+/* The transition lives on the visible state only: entering animates, while the
+   reset (which only happens once the element is fully off-screen) is instant. */
+.motion-ok [data-animate].is-visible {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 800ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+    transform 800ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
+}
+/* Sideways entrances must never create a horizontal scrollbar. `clip` (unlike
+   `hidden`) does not create a scroll container, so the sticky header is safe. */
+main {
+  overflow-x: clip;
+}
+@media print {
+  .motion-ok [data-animate] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ==========================================================================
+   5. RESPONSIVE
+   ========================================================================== */
+
+/* 48rem (768px) */
+@media (width >= 48rem) {
+  .container {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+/* 64rem (1024px) */
+@media (width >= 64rem) {
+  .column-gap {
+    gap: 60px;
+  }
+}
+
+/* 80rem (1280px) */
+@media (width >= 80rem) {
+  .container {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
+/* 96rem (1536px) */
+@media (width >= 96rem) {
+  .sectionPadding {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
